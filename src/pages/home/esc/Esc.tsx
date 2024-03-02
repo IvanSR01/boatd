@@ -15,7 +15,7 @@ const Esc: FC = () => {
           {ESC.map((item, i) => (
             <div className={styles.item} key={i}>
               <div className={styles.subItem}>
-                <item.svg />
+                {/* <item.svg /> */}
                 <p>{item.title}</p>
               </div>
               <IoIosArrowDown />

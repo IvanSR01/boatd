@@ -1,8 +1,10 @@
-'use client'
+"use client";
 import { useEffect, useState } from "react";
 
 export const useSize = (): number => {
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  );
 
   useEffect(() => {
     const handleResize = (event: any) => {

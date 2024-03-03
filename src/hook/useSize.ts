@@ -2,17 +2,23 @@
 import { useEffect, useState } from "react";
 
 export const useSize = (): number => {
-  const [width, setWidth] = useState(window.innerWidth);
+  const isBrowser = typeof window !== "undefined";
+  
+  const [width, setWidth] = useState(isBrowser ? window.innerWidth : 0);
 
   useEffect(() => {
-    const handleResize = (event: any) => {
-      setWidth(event.target.innerWidth);
+    const handleResize = () => {
+      setWidth(window.innerWidth);
     };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+
+    if (isBrowser) {
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
+  }, [isBrowser]);
 
   return width;
 };

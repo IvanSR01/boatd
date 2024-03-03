@@ -19,6 +19,10 @@
   margin: 4px; /* Увеличьте или уменьшите значение по вашему усмотрению */
 }
 
+.react-calendar__tile--hasActive {
+  color: #728487; /* Цвет для прошедших дней */
+}
+
 .react-calendar__tile--now {
   max-width: 60px;
   height: auto;
@@ -66,5 +70,12 @@
   color: #000000; /* Черный цвет для стрелочек */
 }
 .react-calendar__month-view__weekdays__weekday {
-  color: #000000; /* Черный цвет для дней недели */
+  color: #728487; /* Черный цвет для дней недели */
+}
+
+.react-calendar__tile--hasActive.react-calendar__tile--active {
+  color: #728487; /* Цвет для прошедших дней */
+}
+.react-calendar__tile--tile.react-calendar__tile--active {
+  color: #728487; /* Цвет для прошедших дней */
 }

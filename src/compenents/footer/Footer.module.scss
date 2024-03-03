@@ -2,6 +2,12 @@
   background: url("../../assets/img/bg-footer.png") no-repeat center;
   background-size: cover;
   width: 100vw;
+	display: flex;
+	justify-content: center;
+	.container {
+		width: 90vw;
+		// max-width: 1240px;
+	}
   .row {
     display: flex;
     flex-wrap: wrap;
@@ -11,6 +17,7 @@
       padding: 30px 5vw;
     }
     color: #fff;
+		gap: 20px;
     font-size: 20px;
     @media (max-width: 600px) {
       font-size: 16px;

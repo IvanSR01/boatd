@@ -38,7 +38,7 @@ const Home: FC<TypePropsHome> = ({}) => {
           <Category />
           <div className={styles.itemsLayout}>
             <div className={styles.items}>
-              {[...Array(3)].map((_, i) => (
+              {[...Array(4)].map((_, i) => (
                 <HomeCard status={i == 1 ? "promo" : "sale"} key={i} />
               ))}
             </div>
@@ -59,7 +59,7 @@ const Home: FC<TypePropsHome> = ({}) => {
       </div>
       <Workshops />
       <div className={styles.container}>
-        <div className={clsx(styles.section, styles.mb)}>
+        <div className={clsx(styles.section, styles.mb, styles.mt)}>
           <div className={styles.heading}>
             <Heading heading="Яхтклубы" link="яхтклубы" />
           </div>

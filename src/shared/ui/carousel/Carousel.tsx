@@ -6,7 +6,7 @@ import { TypePropsCarousel } from "./Carousel.type";
 
 const CarouselDefault: FC<TypePropsCarousel> = ({ imgs }) => {
   return (
-    <Carousel className="rounded-t-xl">
+    <Carousel className="rounded-t-xl" placeholder={undefined}>
       {imgs.map((item, i) => (
         <Fragment key={i}>
           <img

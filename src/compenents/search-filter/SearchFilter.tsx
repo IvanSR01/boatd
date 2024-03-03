@@ -1,7 +1,7 @@
 "use client";
 import icon from "@/assets/img/arrow.svg";
 import img from "@/assets/img/calendar@1x.svg";
-import locationIcon from "@/assets/location(2).svg";
+import locationIcon from "@/assets/location (3).svg";
 import { useAppDispatch, useAppSelector } from "@/hook/useActions";
 import { useSize } from "@/hook/useSize";
 import Button from "@/shared/ui/button/Button";
@@ -26,7 +26,7 @@ const SearchFilter: FC = () => {
   const [selectedCategory, setSelectedCategory] = useState(0);
   const [selectedSubCategory, setSelectedSubCategory] = useState("");
   const ref = useRef(null);
-	const openRef = useRef(null)
+  const openRef = useRef(null);
   useEffect(() => {
     const handleClick = (event: any) => {
       const path = event.path || (event.composedPath && event.composedPath());
@@ -42,7 +42,7 @@ const SearchFilter: FC = () => {
   }, []);
   return (
     <div className={styles.wrapper}>
-      {width >= 1500 && (
+      {width >= 1200 && (
         <div className={styles.categorys}>
           {categorys.map((item, i) => (
             <div
@@ -59,7 +59,7 @@ const SearchFilter: FC = () => {
         </div>
       )}
       <div className={styles.content}>
-        {width < 1500 ? (
+        {width < 1200 ? (
           <div className={styles.selectLayout}>
             <Select
               selected={type}
@@ -71,6 +71,7 @@ const SearchFilter: FC = () => {
               placeholder="Категория"
               img={icon.src}
             />
+            <div className={styles.border}></div>
           </div>
         ) : (
           <></>
@@ -84,6 +85,7 @@ const SearchFilter: FC = () => {
             img={icon.src}
           />
         </div>
+        <div className={styles.border}></div>
         <div
           style={{
             position: "relative",
@@ -94,7 +96,7 @@ const SearchFilter: FC = () => {
             onClick={() => {
               setIsOpen(!isOpen);
             }}
-						ref={openRef}
+            ref={openRef}
           >
             {dateRange[0] && dateRange[1] ? (
               <div className={clsx(styles.date, isOpen && styles.focusDate)}>
@@ -123,6 +125,7 @@ const SearchFilter: FC = () => {
             </div>
           )}
         </div>
+        <div className={styles.border}></div>
         <div className={styles.selectLayout}>
           <Select
             selected={location}
@@ -132,10 +135,10 @@ const SearchFilter: FC = () => {
             img={locationIcon.src}
           />
         </div>
-
+        <div className={styles.border}></div>
         <div className={styles.buttonLayout}>
           <Button>
-            <CiSearch /> {width >= 1500 ? <></> : <>Поиск</>}
+            <CiSearch /> {width >= 1200 ? <></> : <>Поиск</>}
           </Button>
         </div>
       </div>

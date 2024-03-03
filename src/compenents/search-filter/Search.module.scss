@@ -1,18 +1,26 @@
 .wrapper {
-  width: 70vw;
-  @media (max-width: 600px) {
-    width: 90vw;
+  width: 90vw;
+  @media (min-width: 1800px) {
+    width: 80vw;
   }
   border-radius: 20px;
+	max-width: 1240px;
+	max-height: 102px;
+	@media (max-width: 1200px) {
+		max-height: none;
+	}
   .categorys {
-    width: 680px;
+    width: 647px;
+		height: 56px;
     background-color: #fff;
     display: flex;
-    gap: 20px;
+    gap: 33px;
     color: #000;
+		border-top-right-radius: 15px;
+		border-top-left-radius: 15px;
     .item {
-      height: 50px;
-      width: 160px;
+      padding: 22px 17px;
+			min-width: 120px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -30,16 +38,17 @@
   }
   .content {
     background-color: #fff;
-    width: 70vw;
-    @media (max-width: 600px) {
-      width: 90vw;
+		max-width: 1242px;
+    width: 90vw;
+    @media (min-width: 1800px) {
+      width: 80vw;
     }
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
     padding: 12px 40px;
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     align-items: center;
     min-height: 102px;
     @media (max-width: 1500px) {
@@ -50,27 +59,47 @@
     }
     flex-wrap: wrap;
     .selectLayout {
+			max-width: 350px;
       display: flex;
       justify-content: flex-start;
-      width: 19vw;
-      border-right: 2px solid #eeeeee;
+      width: 26vw;
+      // border-right: 2px solid #eeeeee;
       padding: 0 10px;
-      @media (max-width: 1500px) {
-        width: 70vw;
+      @media (max-width: 1200px) {
+				max-width: none;
+        width: 85vw;
         padding: 6px;
         border-bottom: 2px solid #eeeeee;
         border-right: 0px;
       }
-      @media (max-width: 600px) {
-        width: 85vw;
+      @media (min-width: 1800px) {
+        width: 23vw;
       }
       min-width: 300px;
     }
+		.border {
+			border: 1px solid #eeee;
+			height: 50px;
+			width: 1px;
+			@media (max-width: 1200px) {
+				display: none;
+			}
+		}
     .buttonLayout {
-      padding-top: 6px;
-      width: 3.5vw;
-      @media (max-width: 1500px) {
+			margin-left: 30px;
+      // width: 5vw;
+			width: 54px;
+			height: 54px;
+			@media (min-width: 1501px) and (max-width: 1600px) {
+				margin-left: 20px;
+			}
+      @media (max-width: 1200px) {
+				padding-top: 6px;
         width: 85vw;
+				margin-left: 0;
+      }
+			@media (min-width: 1800px) {
+        width: 3vw;
       }
       svg {
         font-size: 30px;
@@ -84,11 +113,11 @@
       position: relative;
       width: 100%;
       @media (max-width: 1500px) {
-        width: 70vw;
+        margin: 0;
+        width: 85vw;
       }
       @media (max-width: 600px) {
         width: 85vw;
-        margin: 0;
       }
       color: #728487;
       font-size: 18px;
@@ -109,9 +138,12 @@
     .calendar {
       display: flex;
       justify-content: center;
-      width: 19vw;
+      width: 21.5vw;
+			@media (min-width: 1800px) {
+        width: 17vw;
+      }
       @media (max-width: 1500px) {
-        width: 70vw;
+        width: 85vw;
       }
       @media (max-width: 600px) {
         width: 85vw;
@@ -125,6 +157,7 @@
     .focusDate {
       border: 2px solid #00748c;
       border-radius: 10px;
+			color: #000;
       img {
         color: #00748c;
       }

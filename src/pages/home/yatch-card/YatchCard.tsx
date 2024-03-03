@@ -19,9 +19,14 @@ const YatchCard: FC<TypeYatchCard> = ({ img, className, type }) => {
           <div>
             <h4>ПВХ с мотором</h4>
             <div className={styles.item}>
-              <p style={{
-								fontWeight: '300'
-							}}>Measure and report </p>
+              <p
+                style={{
+                  fontWeight: "300",
+                  color: "#787878",
+                }}
+              >
+                Measure and report{" "}
+              </p>
             </div>
           </div>
         ) : (

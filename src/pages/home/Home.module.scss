@@ -8,24 +8,27 @@
     h2 {
       margin-bottom: 40px;
       text-align: center;
-      width: 80%;
+      width: 100%;
+			text-wrap: balance;
+			max-width: 1240px;
       @media (max-width: 600px) {
-        width: 100%;
       }
       font-size: 70px;
       @media (max-width: 960px) {
         line-height: 40px;
         font-size: 32px;
       }
-      @media (min-width: 960px) and (max-width: 1600px) {
-        line-height: 50px;
-        font-size: 40px;
+      @media (max-width: 1440px) {
+        width: 100%;
       }
-      @media (min-width: 1600px) and (max-width: 2000px) {
+      @media (min-width: 960px) and (max-width: 2000px) {
         font-size: 60px;
       }
+			@media (min-width: 1700px) {
+				font-size: 58px;
+			}
       font-weight: normal;
-      line-height: 80px;
+      line-height: 61px;
     }
   }
   .container {
@@ -34,17 +37,23 @@
     justify-content: center;
     flex-wrap: wrap;
     .section {
+			margin-top: 100px;
+      max-width: 1242px;
       h1 {
+				line-height: 57.6px;
         font-size: 48px;
         font-weight: 500;
         @media (max-width: 600px) {
-          font-size: 35px;
+          font-size: 26px;
         }
+				margin-bottom: 30px;
       }
-      margin-top: 50px;
-      width: 70vw;
-      @media (max-width: 700px) {
-        width: 90vw;
+      @media (max-width: 600px) {
+        margin-top: 90px;
+      }
+      width: 90vw;
+      @media (min-width: 1800px) {
+        width: 80vw;
       }
       position: relative;
       span {
@@ -56,61 +65,61 @@
         align-items: center;
         width: 100%;
         h1 {
-          font-weight: bold;
+          font-weight: 500;
         }
       }
-			.itemsLayout {
-				border-radius: 20px;
-				max-width: 80vw;
-				@media (max-width: 800px) {
-					max-width: 90vw;
-				}
-				overflow-x: scroll;
-				height: 500px;
-				overflow-y: hidden;
+      .itemsLayout {
+        border-radius: 20px;
+        max-width: 90vw;
+        @media (max-width: 800px) {
+          max-width: 90vw;
+        }
+        overflow-x: scroll;
+        height: 500px;
+        padding: 0 7px;
+        box-sizing: content-box;
+      }
+			.itemsLayout::-webkit-scrollbar {
+				width: 0;
 			}
       .items {
-				margin-top: 25px;
         min-width: 100%;
         display: flex;
-        // flex-wrap: wrap;
         justify-content: flex-start;
         align-items: flex-start;
         gap: 9.74px;
         padding: 0px;
       }
-      // .arrow {
-      //   left: -5vw;
-      //   top: 35vh;
-      //   width: 90vw;
-      //   position: absolute;
-      //   @media (max-width: 1000px) {
-      //     position: sticky;
-      //     left: -10vw;
-      //     width: 80vw;
-      //   }
-      //   color: #000;
-      //   z-index: 1000;
-      //   font-size: 30px;
-      //   display: flex;
-      //   justify-content: space-between;
-      //   svg {
-      //     cursor: pointer;
-      //   }
-      //   svg:nth-child(1) {
-      //     transform: rotate(90deg);
-      //   }
-      //   svg:nth-child(2) {
-      //     transform: rotate(-90deg);
-      //   }
-      // }
     }
+  }
+  .mt {
+    margin-top: 0;
   }
   .mb {
     margin-bottom: 100px;
   }
   .procat {
-    max-width: 400px;
+    width: 400px;
+    @media (max-width: 580px) {
+      width: 335px;
+      height: 329px;
+    }
+    @media (min-width: 580px) and (max-width: 1000px) {
+      width: 225px;
+      height: 300px;
+    }
+    @media (min-width: 1001px) and (max-width: 1149px) {
+      width: 240px;
+      height: 300px;
+    }
+    @media (min-width: 1150px) and (max-width: 1400px) {
+      width: 340px;
+      height: 300px;
+    }
+    // @media (min-width: 1800px) {
+    //   width: 470px;
+    //   height: 450px;
+    // }
     height: 390px;
     .img {
       img {
@@ -119,13 +128,26 @@
     }
   }
   .yatch {
-    width: 36vw;
-    @media (max-width: 1200px) {
+    width: 60vw;
+    @media (min-width: 600px) and (max-width: 1200px) {
       width: 90vw;
+      height: 530px;
+    }
+    @media (min-width: 550px) and (max-width: 600px) {
+      width: 90vw;
+      height: 500px;
+    }
+    @media (min-width: 400px) and (max-width: 550px) {
+      width: 90vw;
+      height: 400px;
+    }
+    @media (max-width: 400px) {
+      width: 90vw;
+      height: 340px;
     }
   }
   .itemsYatch {
-    margin-top: 50px;
+    margin-top: 30px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;

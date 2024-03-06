@@ -49,6 +49,18 @@
         width: 260px;
         flex-grow: 1;
       }
+
+      &.social {
+        margin-top: 12px;
+
+        img {
+          margin-right: 20px;
+        }
+
+        &:first-of-type {
+          margin-bottom: 24px;
+        }
+      }
     }
   }
   .row__two {

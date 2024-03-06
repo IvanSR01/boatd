@@ -114,7 +114,7 @@
     .date {
       position: relative;
       width: 100%;
-      @media (max-width: 1500px) {
+      @media (max-width: 1200px) {
         margin: 0;
         width: 85vw;
       }
@@ -144,7 +144,7 @@
 			@media (min-width: 1800px) {
         width: 17vw;
       }
-      @media (max-width: 1500px) {
+      @media (max-width: 1200px) {
         width: 85vw;
       }
       @media (max-width: 600px) {

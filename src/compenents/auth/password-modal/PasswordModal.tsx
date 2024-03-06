@@ -17,8 +17,8 @@ const PasswordModal: FC<TypePropsPasswordModal> = ({ onClick, type }) => {
   const [password, setPassword] = useState("");
   const dispatch = useAppDispatch();
   const submitHandle = async () => {
-		console.log(password)
     dispatch(singIn({ phone: setPhone(phone as string), password }));
+		if(!error) onClick() 
   };
 	const onChange = (e: any) => {
 		console.log(e)

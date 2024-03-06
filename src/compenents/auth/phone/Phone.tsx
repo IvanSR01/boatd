@@ -41,7 +41,6 @@ const Phone: FC<TypePropsPhone> = ({ isLogin, onClick, onSubmit, type }) => {
         </div>
         <Button
           onClick={() => submitHandle()}
-          variant="1"
           className={styles.button}
         >
           Далее

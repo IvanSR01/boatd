@@ -14,30 +14,33 @@ import City from "./shared/City";
 import Heading from "./shared/Heading";
 import Workshops from "./workshops/Workshops";
 import YatchCard from "./yatch-card/YatchCard";
+import Wrapper from "@/compenents/wrapper/Wrapper";
 
 const Home: FC<TypePropsHome> = () => {
   return (
     <div className={styles.wrapper}>
       <Header />
       <Intro />
-      <div className={styles.container}>
-        <div className={styles.section}>
-          <h1>
-            Аренда яхты{" "}
-            <span>
-              в <City />
-            </span>
-          </h1>
-          <Category />
-          <div className={styles.itemsLayout}>
-            <div className={styles.items}>
-              {[...Array(4)].map((_, i) => (
-                <HomeCard status={i == 1 ? "promo" : "sale"} key={i} />
-              ))}
+      <Wrapper>
+        <div className={styles.container}>
+          <div className={styles.section}>
+            <h1>
+              Аренда яхты{" "}
+              <span>
+                в <City />
+              </span>
+            </h1>
+            <Category />
+            <div className={styles.itemsLayout}>
+              <div className={styles.items}>
+                {[...Array(4)].map((_, i) => (
+                  <HomeCard status={i == 1 ? "promo" : "sale"} key={i} />
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </Wrapper>
       <Esc />
       <div className={styles.container}>
         <div className={clsx(styles.section, styles.mb)}>

@@ -16,6 +16,7 @@ import Heading from "./shared/Heading";
 import Workshops from "./workshops/Workshops";
 import YatchCard from "./yatch-card/YatchCard";
 import MySlider from "@/shared/ui/slider/slider";
+import HomeModal from "./shared/HomeModal";
 
 const Home: FC<TypePropsHome> = ({}) => {
   return (
@@ -51,7 +52,12 @@ const Home: FC<TypePropsHome> = ({}) => {
           <Heading heading="Прокат лодок" link="лодки" />
           <div className={clsx(styles.itemsYatch, styles.gap)}>
             {[...Array(3)].map((_, i) => (
-              <YatchCard type="'dada" img={img} className={styles.procat} key={i} />
+              <YatchCard
+                type="'dada"
+                img={img}
+                className={styles.procat}
+                key={i}
+              />
             ))}
           </div>
           <Bottom link="лодки" />
@@ -72,6 +78,7 @@ const Home: FC<TypePropsHome> = ({}) => {
         </div>
       </div>
       {/* <MySlider/> */}
+      <HomeModal />
       <Footer />
     </div>
   );

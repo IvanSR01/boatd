@@ -10,9 +10,9 @@ import Link from "next/link";
 import Image from "next/image";
 import vk from "@/assets/logos/Vector.svg";
 import tg from "@/assets/logos/ic_sharp-telegram.svg";
-import imgTg from "@/assets/logos/logos_telegram.png";
-import wat from "@/assets/logos/logos_whatsapp-icon.png";
-import mail from "@/assets/logos/mdi_email-box.png";
+import imgTg from "@/assets/logos/logos_telegram.svg";
+import wat from "@/assets/logos/logos_whatsapp-icon.svg";
+import mail from "@/assets/logos/mdi_email-box.svg";
 const Footer: FC = () => {
   return (
     <footer className={styles.wrapper}>
@@ -51,14 +51,14 @@ const Footer: FC = () => {
           <div>
             <div className={styles.links}>
               <h4>Соц сети</h4>
-              <div className={styles.items}>
+              <div className={`${styles.items} ${styles.social}`}>
                 <img src={vk.src} alt="" />
                 <img src={tg.src} alt="" />
               </div>
             </div>
             <div className={styles.links}>
               <h4>Связаться с нами</h4>
-              <div className={styles.items}>
+              <div className={`${styles.items} ${styles.social}`}>
                 <img src={imgTg.src} alt="" />
                 <img src={wat.src} alt="" />
                 <img src={mail.src} alt="" />

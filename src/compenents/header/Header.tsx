@@ -1,21 +1,30 @@
 import { FC } from "react";
-import styles from "./Header.module.scss";
-import Image from "next/image";
 import logo from "@/assets/img/logo.svg";
 import profile from "@/assets/img/profile-circle.svg";
 import favorite from "@/assets/img/heart.svg";
+import Image from "next/image";
+import Wrapper from "../wrapper/Wrapper";
+import styles from "./Header.module.scss";
+
 const Header: FC = () => {
   return (
     <header className={styles.header}>
-      <div className={styles.container}>
-        <div className={styles.logo}>
-          <Image src={logo} alt="" />
+      <Wrapper>
+        <div className={styles.container}>
+          <a href="/">
+            <Image className={styles.logo} src={logo} alt="" />
+          </a>
+
+          <div className={styles.links}>
+            <a href="/">
+              <Image src={favorite} alt="" />
+            </a>
+            <a href="/">
+              <Image src={profile} alt="" />
+            </a>
+          </div>
         </div>
-        <div className={styles.links}>
-          <Image src={favorite} alt="" width={40} height={30} />
-          <Image src={profile} alt="" width={40} height={30} />
-        </div>
-      </div>
+      </Wrapper>
     </header>
   );
 };

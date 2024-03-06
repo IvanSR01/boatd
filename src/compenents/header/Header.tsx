@@ -12,7 +12,7 @@ const Header: FC = () => {
       <Wrapper>
         <div className={styles.container}>
           <a href="/">
-            <Image className={styles.logo} src={logo} alt="" />
+            <img className={styles.logo} src={logo.src} alt="" />
           </a>
 
           <div className={styles.links}>

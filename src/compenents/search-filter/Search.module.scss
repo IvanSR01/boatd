@@ -1,11 +1,6 @@
 .wrapper {
-  width: 90vw;
-  @media (min-width: 1800px) {
-    width: 80vw;
-  }
   border-radius: 20px;
 	max-width: 1240px;
-	max-height: 102px;
 	@media (max-width: 1200px) {
 		max-height: none;
 	}
@@ -29,6 +24,7 @@
       border-bottom: 4px solid #eeeeee;
       cursor: pointer;
       font-weight: 400;
+      white-space: nowrap;
     }
     .active {
       font-weight: 600;
@@ -140,16 +136,6 @@
     .calendar {
       display: flex;
       justify-content: center;
-      width: 21.5vw;
-			@media (min-width: 1800px) {
-        width: 17vw;
-      }
-      @media (max-width: 1500px) {
-        width: 85vw;
-      }
-      @media (max-width: 600px) {
-        width: 85vw;
-      }
     }
     span {
       color: #313131;

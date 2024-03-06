@@ -2,7 +2,6 @@ import img from "@/assets/img/Rectangle 2692.png";
 import Footer from "@/compenents/footer/Footer";
 import Header from "@/compenents/header/Header";
 import Intro from "@/compenents/intro/Intro";
-import SearchFilter from "@/compenents/search-filter/SearchFilter";
 import clsx from "clsx";
 import { FC } from "react";
 import styles from "./Home.module.scss";
@@ -15,18 +14,12 @@ import City from "./shared/City";
 import Heading from "./shared/Heading";
 import Workshops from "./workshops/Workshops";
 import YatchCard from "./yatch-card/YatchCard";
-import MySlider from "@/shared/ui/slider/slider";
 
-const Home: FC<TypePropsHome> = ({}) => {
+const Home: FC<TypePropsHome> = () => {
   return (
     <div className={styles.wrapper}>
       <Header />
-      <Intro>
-        <div className={styles.intro}>
-          <h2>Откройте новые горизонты праздника с нашими яхтами и лодками</h2>
-          <SearchFilter />
-        </div>
-      </Intro>
+      <Intro />
       <div className={styles.container}>
         <div className={styles.section}>
           <h1>

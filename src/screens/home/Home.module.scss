@@ -70,7 +70,8 @@
       }
       .itemsLayout {
         border-radius: 20px;
-        max-width: 90vw;
+        margin: 0 -7px;
+        max-width: calc(90vw);
         @media (max-width: 800px) {
           max-width: 90vw;
         }

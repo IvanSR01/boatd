@@ -17,7 +17,8 @@ const FullEsc = () => {
           <div className={styles.upper}>
             <img src={icon.src} alt="" />
           </div>
-          <img className={styles.img} src={img.src} />
+          <div className={styles.img}></div>
+          {/* <img className={styles.img} src={img.src} /> */}
           <div className={styles.row}>
             <div>
               <h3>Porshe Panamera</h3>

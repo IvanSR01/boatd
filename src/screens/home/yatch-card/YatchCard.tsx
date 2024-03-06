@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import styles from "./YatchCard.module.scss";
 import clsx from "clsx";
 import Image from "next/image";
-import icon from "@/assets/location2.png";
+import icon from "@/assets/location.svg";
 import iconT from "@/assets/star.svg";
 import { IoIosArrowDown } from "react-icons/io";
 import { TypeYatchCard } from "./YatchCard.type";

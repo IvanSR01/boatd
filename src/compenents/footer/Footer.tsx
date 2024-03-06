@@ -5,7 +5,7 @@ import {
   footerLinksPart,
   footerLinksSec,
 } from "@/shared/var/footer-links";
-import logo from "@/assets/Logo.svg";
+import logo from "@/assets/img/logo.svg";
 import Link from "next/link";
 import Image from "next/image";
 import vk from "@/assets/logos/Vector.svg";
@@ -68,12 +68,9 @@ const Footer: FC = () => {
         </div>
         <div className={styles.row__two}>
           <div className={styles.logo}>
-            <Image src={logo} alt="" width={40} height={100} />
-            <h3>
-              <span>на</span>лодку
-            </h3>
+            <Image src={logo} alt="" height={24} />
           </div>
-          <p>© 2024 Налодку</p>
+          <p>© 2024 ЯХТЫ</p>
         </div>
       </div>
     </footer>

@@ -10,11 +10,10 @@
 		min-width: 360px;
 	}
   min-width: 407.5px;
-  height: 400px;
   background-color: #fff;
   border-radius: 20px;
 	.border {
-		border: 2px solid #e6e6e6;
+		border: 1px solid #eee;
 		border-bottom-right-radius: 20px;
 		border-bottom-left-radius: 20px;
 	}
@@ -29,7 +28,7 @@
   transition: box-shadow 0.5s;
   .upper {
     top: 25px;
-    left: -5px;
+    left: -8px;
     position: absolute;
     z-index: 20;
   }
@@ -61,11 +60,15 @@
     }
   }
   .row {
-    padding: 20px;
+    padding: 16px 32px;
     display: flex;
     justify-content: space-between;
     h3 {
       font-size: 26px;
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       @media (max-width: 1500px) {
         font-size: 18px;
       }
@@ -74,23 +77,34 @@
     .star {
       gap: 5px;
       display: flex;
+      font-size: 12px;
+
+      img {
+        display: block;
+      }
     }
-    .prive {
+    .price {
       color: #00748c;
       width: 100px;
-      font-size: 16px;
-      b {
-        font-size: 20px;
+      font-size: 12px;
+      line-height: 18px;
+      font-weight: 500;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      .sum {
+        display: flex;
+        align-items: flex-start;
+        b {
+          margin-left: 11px;
+          font-size: 24px;
+          line-height: 28px;
+        }
       }
-      text-wrap: balance;
-      text-align: right;
     }
   }
 }
 .card:hover {
-  box-shadow: 0px 0 20px #d8d8d8;
-	.border {
-		border: 2px solid transparent;
-
-	}
+  box-shadow: 4px 4px 13.699999809265137px 0px #0A51551A;
 }

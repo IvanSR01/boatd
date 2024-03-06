@@ -72,7 +72,7 @@ const Home: FC<TypePropsHome> = ({}) => {
         </div>
       </div>
       {/* <MySlider/> */}
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 };

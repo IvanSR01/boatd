@@ -5,21 +5,16 @@ import img from "@/assets/img/Rectangle 28.png";
 import imgT from "@/assets/img/Rectangle 2821.png";
 import imgD from "@/assets/img/Rectangle 2231.png";
 import clsx from "clsx";
-import icon from "@/assets/img/Tag.png";
-import iconTwo from "@/assets/img/Tag(1).png";
 import favIcon from "@/assets/img/heart.png";
 import iconThree from "@/assets/star.svg";
 import { TypePropsHomeCard } from "./HomeCard.type";
 import CarouselDefault from "@/shared/ui/carousel/Carousel";
+import Badge from "@/compenents/badge/Badge";
 const HomeCard: FC<TypePropsHomeCard> = ({ status }) => {
   return (
     <div className={styles.card}>
       <div className={clsx(styles.upper, "")}>
-        {status === "promo" ? (
-          <img src={iconTwo.src} alt="" />
-        ) : (
-          <img src={icon.src} alt="" />
-        )}
+        <Badge type={status === 'promo' ? 'sale' : 'popular'} />
       </div>
       <div className={styles.img}>
         <CarouselDefault imgs={[img.src, imgT.src, imgD.src]} />
@@ -36,10 +31,13 @@ const HomeCard: FC<TypePropsHomeCard> = ({ status }) => {
               <p>4.9 (50)</p>
             </div>
           </div>
-          <p className={styles.prive}>
-            <sup>от </sup>
-            <b>1400</b> ₽/час
-          </p>
+          <div className={styles.price}>
+            <div className={styles.sum}>
+              <div>от</div>
+              <b>1400</b>
+            </div>
+            <div>₽/час</div>
+          </div>
         </div>
       </div>
     </div>

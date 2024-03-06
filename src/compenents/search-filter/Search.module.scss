@@ -52,10 +52,12 @@
     align-items: center;
     min-height: 102px;
     @media (max-width: 1500px) {
-      border-top-left-radius: 10px;
       justify-content: center;
       gap: 0;
       padding: 12px 10px;
+    }
+    @media (max-width: 1200px) {
+      border-top-left-radius: 15px;
     }
     flex-wrap: wrap;
     .selectLayout {

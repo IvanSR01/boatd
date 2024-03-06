@@ -1,19 +1,28 @@
-'use client'
+"use client";
+import { errorCatch } from "@/$api/api.helpers";
 import Phone from "@/compenents/auth/phone/Phone";
 import Header from "@/compenents/header/Header";
 import { useAppDispatch, useAppSelector } from "@/hook/useActions";
-import { TypeRegisterSeller } from "@/shared/types/auth.type";
-import { singUpSeller } from "@/store/action/auth.action";
+import authService from "@/service/auth-service/auth.service";
+import { setUser } from "@/store/slice/user.slice";
+import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import styles from "../VerifyPhone.module.scss";
 const VerifyPhoneSeller = () => {
   const dispatch = useAppDispatch();
   const { push } = useRouter();
-  const { data } = useAppSelector((state) => state.registerSeller);
-  const onSubmit = () => {
-    dispatch(singUpSeller(data as TypeRegisterSeller));
-  };
-  const onClick = () => push(`/auth/register/seller`);
+  const { data } = useAppSelector((state) => state.registerUser);
+  const { mutate: mutateSingUp } = useMutation({
+    mutationFn: () => authService.sellerRegistration(data),
+    onError: (err: any) => {
+      console.log(errorCatch(err));
+    },
+    onSuccess: (data) => {
+      dispatch(setUser(data));
+			push('/')
+
+    },
+  });
   return (
     <>
       <Header />
@@ -21,8 +30,8 @@ const VerifyPhoneSeller = () => {
         <Phone
           isLogin={false}
           type={"registerSeller"}
-          onClick={() => onClick()}
-          onSubmit={() => onSubmit()}
+          onClick={() => push(`/auth/register/seller`)}
+          onSubmit={() => mutateSingUp()}
         />
       </div>
     </>

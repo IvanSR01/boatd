@@ -1,3 +1,4 @@
+"use client";
 import { NextRequest, NextResponse } from "next/server";
 import { getTokens } from "./$api/tokens.api";
 
@@ -6,19 +7,20 @@ import { getTokens } from "./$api/tokens.api";
 
 export async function middleware(request: NextRequest, response: NextResponse) {
   const { url, cookies } = request;
-
-  const refreshToken = getTokens();
+  const { refreshToken } = getTokens();
   const isAuthPage = url.includes("/auth");
 
   // if (isAuthPage && refreshToken) {
   // 	return NextResponse.redirect(new URL(DASHBOARD_PAGES.HOME, url))
   // }
 
+  if (refreshToken && isAuthPage) {
+    return NextResponse.redirect(new URL("/"));
+  }
   if (isAuthPage && !refreshToken) {
     return NextResponse.next();
   }
-
-  return NextResponse.redirect(new URL("/"));
+  return NextResponse.next();
 }
 
 export const config = {

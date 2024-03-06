@@ -8,12 +8,12 @@ import { FaEye } from "react-icons/fa";
 import Button from "@/shared/ui/button/Button";
 import { TypePropsPhone } from "./Phone.type";
 import Link from "next/link";
-const Phone: FC<TypePropsPhone> = ({ isLogin, onClick, onSubmit, type }) => {
-  const { data, code } = useAppSelector((state) => state[type]);
+const Phone: FC<TypePropsPhone> = ({ isLogin, onClick, onSubmit }) => {
+  const { data } = useAppSelector((state) => state.registerUser);
   const [pincode, setPincode] = useState("");
   const [error, setError] = useState("");
   const submitHandle = () => {
-    if (code !== pincode) return setError("Неверный код");
+    if (data.code !== pincode) return setError("Неверный код");
     onSubmit();
   };
   return (
@@ -39,10 +39,7 @@ const Phone: FC<TypePropsPhone> = ({ isLogin, onClick, onSubmit, type }) => {
           {error && <p>{error}</p>}
           <FaEye />
         </div>
-        <Button
-          onClick={() => submitHandle()}
-          className={styles.button}
-        >
+        <Button onClick={() => submitHandle()} className={styles.button}>
           Далее
         </Button>
       </div>

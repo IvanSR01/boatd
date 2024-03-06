@@ -3,11 +3,13 @@ import { errorCatch } from "@/$api/api.helpers";
 import Header from "@/compenents/header/Header";
 import { useAppDispatch } from "@/hook/useActions";
 import authService from "@/service/auth-service/auth.service";
+import { TypeHasUser } from "@/shared/types/auth.type";
 import Button from "@/shared/ui/button/Button";
 import { MaterialIcon } from "@/shared/ui/icon";
 import setPhone from "@/shared/utils/setPhone";
-import { loginSeller, loginUser } from "@/shared/var/login";
-import { setState } from "@/store/slice/registretion-seller.slice";
+import { loginSeller } from "@/shared/var/login";
+import { setUserRegisterion } from "@/store/slice/registretion-user.slice";
+import { useMutation } from "@tanstack/react-query";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
 import { FC, useState } from "react";
@@ -18,6 +20,8 @@ import styles from "../Auth.module.scss";
 import AuthSelect from "../select/Select";
 
 const RegisterSeller: FC = () => {
+  const options = ["Физлица и самозанятые", "ООО и ИП"];
+  const [selected, setSelected] = useState("");
   const [agree, setAgree] = useState({
     isPersonal: false,
     isConf: false,
@@ -25,43 +29,46 @@ const RegisterSeller: FC = () => {
   const {
     register,
     handleSubmit,
-    setError,
     formState: { errors },
-  } = useForm({});
-  const [selected, setSelected] = useState("");
-  const options = ["Физлица и самозанятые", "ООО и ИП"];
+    setError,
+    getValues,
+  } = useForm();
   const dispatch = useAppDispatch();
   const { push } = useRouter();
+  const { mutate: mutateHas } = useMutation({
+    mutationFn: ({ phone, email }: TypeHasUser) =>
+      authService.hasUser(phone, email),
+    onError: (err: any) => {
+      setError(err?.data?.message?.type as string, {
+        message: errorCatch(err),
+      });
+    },
+    onSuccess: async (data) => {
+      const res = await authService.getCode(setPhone(data.phone));
+      dispatch(
+        setUserRegisterion({
+          ...getValues(),
+          phone: setPhone(data.phone),
+          paymentInfo: {
+            status: selected,
+            nameACompany: getValues("nameACompany"),
+            itn: getValues("itn"),
+            bic: getValues("bic"),
+            cardNumber: getValues("cardNumber"),
+            paymentAccount: getValues("paymentAccount"),
+          },
+          code: res.code,
+        })
+      );
+      push("/auth/verify-phone/user");
+    },
+  });
   const onSubmit = async (data: any) => {
     if (data.password !== data.confirm)
       return setError("confirm", {
         message: "Пароль не совпадают",
       });
-    try {
-      const res = await authService.getCode(setPhone(data.phone), false);
-
-      dispatch(
-        setState({
-          ...data,
-          paymentInfo: {
-            status: selected,
-            nameACompany: data.nameACompany,
-            int: data.itn,
-            bic: data.bic,
-            cardNumber: data.cardNumber,
-            paymentAccount: data.paymentAccount,
-          },
-          phone: setPhone(data.phone),
-          code: res.code,
-        })
-      );
-
-      push("/auth/verify-phone/seller");
-    } catch (error) {
-      setError("phone", {
-        message: errorCatch(error),
-      });
-    }
+    mutateHas({ phone: data.phone, email: data.email });
   };
   return (
     <>
@@ -69,7 +76,7 @@ const RegisterSeller: FC = () => {
       <div className={styles.wrapper}>
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <div className={styles.heading}>
-            <IoIosArrowDown onClick={() => push('/')}/>
+            <IoIosArrowDown onClick={() => push("/")} />
             <p>Регистрация владельца</p>
           </div>
           <div className={styles.items}>

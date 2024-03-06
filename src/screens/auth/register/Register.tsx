@@ -17,6 +17,8 @@ import { useAppDispatch } from "@/hook/useActions";
 import { setUserRegisterion } from "@/store/slice/registretion-user.slice";
 import { useRouter } from "next/navigation";
 import setPhone from "@/shared/utils/setPhone";
+import { useMutation } from "@tanstack/react-query";
+import { TypeHasUser } from "@/shared/types/auth.type";
 
 const Register: FC = () => {
   const [agree, setAgree] = useState({
@@ -28,31 +30,36 @@ const Register: FC = () => {
     handleSubmit,
     formState: { errors },
     setError,
-  } = useForm({});
+    getValues,
+  } = useForm();
   const dispatch = useAppDispatch();
   const { push } = useRouter();
+  const { mutate: mutateHas } = useMutation({
+    mutationFn: ({ phone, email }: TypeHasUser) =>
+      authService.hasUser(phone, email),
+    onError: (err: any) => {
+      setError(err?.data?.message?.type as string, {
+        message: errorCatch(err),
+      });
+    },
+    onSuccess: async (data) => {
+      const res = await authService.getCode(setPhone(data.phone));
+      dispatch(
+        setUserRegisterion({
+          ...getValues(),
+          phone: setPhone(data.phone),
+          code: res.code,
+        })
+      );
+      push("/auth/verify-phone/user");
+    },
+  });
   const onSubmit = async (data: any) => {
     if (data.password !== data.confirm)
       return setError("confirm", {
         message: "Пароль не совпадают",
       });
-    try {
-      const res = await authService.getCode(setPhone(data.phone), false);
-      console.log(res);
-      dispatch(
-        setUserRegisterion({
-          ...data,
-          phone: setPhone(data.phone),
-          code: res.code,
-        })
-      );
-
-      push("/auth/verify-phone/user");
-    } catch (error) {
-      setError("phone", {
-        message: errorCatch(error),
-      });
-    }
+    mutateHas({ phone: data.phone, email: data.email });
   };
   return (
     <>
@@ -184,7 +191,13 @@ const Register: FC = () => {
               </label>
             </div>
           </div>
-          <Button type="submit" className={styles.button}>
+          <Button
+            type="submit"
+            className={clsx(
+              styles.button,
+              !agree.isConf && !agree.isPersonal && styles.disabled
+            )}
+          >
             Продолжить
           </Button>
         </form>

@@ -1,6 +1,7 @@
+import { TypeStoreRegister } from "@/shared/types/auth.type";
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+const initialState: TypeStoreRegister = {
   data: {
     name: "",
     surname: "",
@@ -8,8 +9,11 @@ const initialState = {
     phone: "",
     password: "",
     confirm: "",
+    paymentInfo: {},
+    personalUrl: "",
+		code: "",
+		login: ''
   },
-  code: "",
 };
 
 const registrationSlice = createSlice({

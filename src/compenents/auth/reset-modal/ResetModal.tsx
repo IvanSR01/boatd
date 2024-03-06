@@ -2,7 +2,6 @@ import { errorCatch } from "@/$api/api.helpers";
 import authService from "@/service/auth-service/auth.service";
 import Button from "@/shared/ui/button/Button";
 import fromatPhone from "@/shared/utils/setPhone";
-import { setState } from "@/store/slice/registretion-seller.slice";
 import { setUserRegisterion } from "@/store/slice/registretion-user.slice";
 import clsx from "clsx";
 import Link from "next/link";
@@ -12,34 +11,31 @@ import { IoClose } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import styles from "./ResetModal.module.scss";
 import { TypePropsResetModel } from "./ResetModel.type";
-const ResetModal: FC<TypePropsResetModel> = ({ onClick, setRole, setNextPage }) => {
+import { useMutation } from "@tanstack/react-query";
+const ResetModal: FC<TypePropsResetModel> = ({
+  onClick,
+  setRole,
+  setNextPage,
+}) => {
   const [error, setError] = useState("");
   const [phone, setPhone] = useState("");
-	const dispatch = useDispatch();
-  const submitHandle =	async () => {
-    try {	
-      const res = await authService.getCode(fromatPhone(phone), true);
-      if (res.role === "seller") {
-        dispatch(
-          setState({
-            code: res.code,
-          })
-        );
-        setRole("registerSeller");
-      } else {
-        dispatch(
-          setUserRegisterion({
-            code: res.code,
-          })
-        );
-        setRole("registerUser");
-      }
-			localStorage.setItem('phone', phone)
-      setNextPage();
-    } catch (error) {
-			setError(errorCatch(error));
-		}
-  };
+  const dispatch = useDispatch();
+  const { mutate: mutateGetCode } = useMutation({
+    mutationFn: () => authService.getCode(phone),
+    onError: (err: any) => {
+      setError(errorCatch(err));
+    },
+    onSuccess: (data) => {
+      dispatch(
+        setUserRegisterion({
+          phone: phone,
+          code: data.code,
+        })
+      );
+			setNextPage()
+      onClick();
+    },
+  });
 
   return (
     <div className={styles.wrapper}>
@@ -71,13 +67,13 @@ const ResetModal: FC<TypePropsResetModel> = ({ onClick, setRole, setNextPage }) 
           Если этот способ не помог, напишите нам через форму обратной связи с
           данными, которые указали при регистрации.
         </span>
-        <Button onClick={() => submitHandle()} className={styles.button}>
+        <Button onClick={() => mutateGetCode()} className={styles.button}>
           Далее
         </Button>
       </div>
       <div className={styles.bottom}>
         <p>У вас нет аккаунта?</p>
-        <Link href={"/"}>Зарегестрироваться</Link>
+        <Link href={"/auth/register/user"}>Зарегестрироваться</Link>
       </div>
     </div>
   );

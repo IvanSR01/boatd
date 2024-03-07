@@ -1,9 +1,12 @@
+"use client";
 import img from "@/assets/img/Rectangle 2692.png";
+import iconPrev from "@/assets/svg/arrow-prev-black.svg";
+import iconNext from "@/assets/svg/arrow-next-black.svg";
 import Footer from "@/compenents/footer/Footer";
 import Header from "@/compenents/header/Header";
 import Intro from "@/compenents/intro/Intro";
 import clsx from "clsx";
-import { FC } from "react";
+import { FC, useState } from "react";
 import styles from "./Home.module.scss";
 import type { TypePropsHome } from "./Home.type";
 import Category from "./category/Category";
@@ -15,8 +18,12 @@ import Heading from "./shared/Heading";
 import Workshops from "./workshops/Workshops";
 import YatchCard from "./yatch-card/YatchCard";
 import Wrapper from "@/compenents/wrapper/Wrapper";
+import { IconButton } from "@material-tailwind/react";
+import Image from "next/image";
 
 const Home: FC<TypePropsHome> = () => {
+  const [selectedCategory, setSelectedCategory] = useState(0);
+
   return (
     <div className={styles.wrapper}>
       <Header />
@@ -24,13 +31,37 @@ const Home: FC<TypePropsHome> = () => {
       <Wrapper>
         <div className={styles.container}>
           <div className={styles.section}>
+            <IconButton
+              placeholder="<"
+              size="lg"
+              color="white"
+              variant="text"
+              onClick={() => setSelectedCategory(selectedCategory - 1)}
+              disabled={selectedCategory === 0}
+              className={styles.arrowPrev}
+            >
+              <Image src={iconPrev} alt="prev" />
+            </IconButton>
+
+            <IconButton
+              placeholder=">"
+              size="lg"
+              color="black"
+              variant="text"
+              onClick={() => setSelectedCategory(selectedCategory + 1)}
+              disabled={selectedCategory === 4}
+              className={styles.arrowNext}
+
+            >
+              <Image src={iconNext} alt="next" />
+            </IconButton>
             <h1>
               Аренда яхты{" "}
               <span>
                 в <City />
               </span>
             </h1>
-            <Category />
+            <Category selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
             <div className={styles.itemsLayout}>
               <div className={styles.items}>
                 {[...Array(3)].map((_, i) => (

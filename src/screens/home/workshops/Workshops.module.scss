@@ -59,6 +59,9 @@
       }
     }
   }
+  .items {
+    scrollbar-width: none;
+  }
 	.items::-webkit-scrollbar {
 		width: 0;
 	}

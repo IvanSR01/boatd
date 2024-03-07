@@ -42,17 +42,19 @@ const Home: FC<TypePropsHome> = () => {
         </div>
       </Wrapper>
       <Esc />
-      <div className={styles.container}>
-        <div className={clsx(styles.section, styles.mb)}>
-          <Heading heading="Прокат лодок" link="лодки" />
-          <div className={clsx(styles.itemsYatch, styles.gap)}>
-            {[...Array(3)].map((_, i) => (
-              <YatchCard type="'dada" img={img} className={styles.procat} key={i} />
-            ))}
+      <Wrapper>
+        <div className={styles.container}>
+          <div className={clsx(styles.section, styles.mb)}>
+            <Heading heading="Прокат лодок" link="лодки" />
+            <div className={clsx(styles.itemsYatch, styles.gap)}>
+              {[...Array(3)].map((_, i) => (
+                <YatchCard type="'dada" img={img} className={styles.procat} key={i} />
+              ))}
+            </div>
+            <Bottom link="лодки" />
           </div>
-          <Bottom link="лодки" />
         </div>
-      </div>
+      </Wrapper>
       <Workshops />
       <div className={styles.container}>
         <div className={clsx(styles.section, styles.mb, styles.mt)}>

@@ -7,6 +7,7 @@ import FullEsc from "./FullEsc/FullEsc";
 import { ESC } from "@/shared/var/esc";
 import Wrapper from "@/compenents/wrapper/Wrapper";
 import img from "@/assets/img/image 20.png";
+import Image from "next/image";
 
 const Esc: FC = () => {
   return (
@@ -20,7 +21,7 @@ const Esc: FC = () => {
                 {ESC.map((item, i) => (
                   <div className={styles.item} key={i}>
                     <div className={styles.subItem}>
-                      {/* <item.svg /> */}
+                      <Image src={item.svg} alt={item.title} />
                       <p>{item.title}</p>
                     </div>
                     <IoIosArrowDown />

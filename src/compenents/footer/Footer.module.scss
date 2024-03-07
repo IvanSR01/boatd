@@ -9,10 +9,12 @@
 	}
   .row {
     width: 100vw;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 52px 20vw 38px;
+    padding: 52px 0 38px;
+    .rowInner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
     @media (max-width: 600px) {
       padding: 30px 5vw;
     }
@@ -65,16 +67,18 @@
   }
   .row__two {
     border-top: 1px solid #fff;
-    padding: 0 20vw;
     @media (max-width: 600px) {
-      padding: 5px 5vw 0 5vw;
+      padding: 5px 0 0 5vw;
     }
     color: #fff;
-    display: flex;
-    gap: 40px;
-    align-items: center;
     font-weight: bold;
     font-size: 20px;
+
+    .row__two__inner {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
     .logo {
       font-weight: 900;
       display: flex;

@@ -33,7 +33,7 @@ const Home: FC<TypePropsHome> = () => {
             <Category />
             <div className={styles.itemsLayout}>
               <div className={styles.items}>
-                {[...Array(4)].map((_, i) => (
+                {[...Array(3)].map((_, i) => (
                   <HomeCard status={i == 1 ? "promo" : "sale"} key={i} />
                 ))}
               </div>

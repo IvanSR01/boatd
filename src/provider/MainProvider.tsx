@@ -1,6 +1,6 @@
 "use client";
 import { FC, ReactNode } from "react";
-// import QueryProvider from './QueryProvider.tsx'
+import QueryProvider from './QueryProvider.tsx'
 import { Provider } from "react-redux";
 import store from "../store/store.ts";
 // import ToastProvider from "./ToastProvider.tsx";
@@ -12,9 +12,9 @@ const MainProvider: FC<IMain> = ({ children }) => {
   return (
     <ThemeProvider>
       <Provider store={store}>
-        {/* <QueryProvider> */}
+        <QueryProvider>
         {children}
-        {/* </QueryProvider> */}
+        </QueryProvider>
       </Provider>
     </ThemeProvider>
   );

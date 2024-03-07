@@ -5,4 +5,5 @@ export type TypePropsButton = {
   onClick?: (e?: any) => void;
 	className?: string
 	disable?: boolean
+	type?: 'button' | 'submit'
 };

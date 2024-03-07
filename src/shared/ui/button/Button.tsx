@@ -7,6 +7,7 @@ const Button: FC<TypePropsButton> = ({
   onClick,
   className,
   disable,
+  type,
 }) => {
   const handleClick = (e: any) => {
     if (disable) return;
@@ -14,7 +15,8 @@ const Button: FC<TypePropsButton> = ({
   };
   return (
     <button
-      disabled
+      disabled={disable}
+      type={type ? type : "button"}
       onClick={handleClick}
       className={clsx(styles.button, className)}
     >

@@ -23,6 +23,8 @@ import Image from "next/image";
 
 const Home: FC<TypePropsHome> = () => {
   const [selectedCategory, setSelectedCategory] = useState(0);
+import MySlider from "@/shared/ui/slider/slider";
+import HomeModal from "./shared/HomeModal";
 
   return (
     <div className={styles.wrapper}>
@@ -83,6 +85,18 @@ const Home: FC<TypePropsHome> = () => {
               ))}
             </div>
             <Bottom link="лодки" />
+      <div className={styles.container}>
+        <div className={clsx(styles.section, styles.mb)}>
+          <Heading heading="Прокат лодок" link="лодки" />
+          <div className={clsx(styles.itemsYatch, styles.gap)}>
+            {[...Array(3)].map((_, i) => (
+              <YatchCard
+                type="'dada"
+                img={img}
+                className={styles.procat}
+                key={i}
+              />
+            ))}
           </div>
         </div>
       </Wrapper>
@@ -103,6 +117,7 @@ const Home: FC<TypePropsHome> = () => {
         </div>
       </Wrapper>
       {/* <MySlider/> */}
+      <HomeModal />
       <Footer />
     </div>
   );

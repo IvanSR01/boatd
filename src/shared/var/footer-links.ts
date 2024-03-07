@@ -46,7 +46,7 @@ export const footerLinksBuyer: TypeFooterLink[] = [
 export const footerLinksPart: TypeFooterLink[] = [
   {
     name: "Как зарегистрироваться",
-    link: "/",
+    link: "/auth/register/seller",
   },
   {
     name: "Как добавить товар/услугу",

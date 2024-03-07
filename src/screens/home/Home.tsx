@@ -56,19 +56,21 @@ const Home: FC<TypePropsHome> = () => {
         </div>
       </Wrapper>
       <Workshops />
-      <div className={styles.container}>
-        <div className={clsx(styles.section, styles.mb, styles.mt)}>
-          <div className={styles.heading}>
-            <Heading heading="Яхтклубы" link="яхтклубы" />
+      <Wrapper>
+        <div className={styles.container}>
+          <div className={clsx(styles.section, styles.mb, styles.mt)}>
+            <div className={styles.heading}>
+              <Heading heading="Яхтклубы" link="яхтклубы" />
+            </div>
+            <div className={clsx(styles.itemsYatch, styles.gap)}>
+              {[...Array(2)].map((_, i) => (
+                <YatchCard className={styles.yatch} img={img} key={i} />
+              ))}
+            </div>
+            <Bottom link="яхтклубы" />
           </div>
-          <div className={clsx(styles.itemsYatch, styles.gap)}>
-            {[...Array(2)].map((_, i) => (
-              <YatchCard className={styles.yatch} img={img} key={i} />
-            ))}
-          </div>
-          <Bottom link="яхтклубы" />
         </div>
-      </div>
+      </Wrapper>
       {/* <MySlider/> */}
       <Footer />
     </div>
